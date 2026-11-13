@@ -1,0 +1,10 @@
+node_modules
+.next
+out
+film
+test-results
+.omc
+.brand-swap-tmp
+.playwright-mcp
+*.tsbuildinfo
+_eski-vite

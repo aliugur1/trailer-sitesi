@@ -1,0 +1,29 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; font-family: "Archivo Black", sans-serif; }
+    #ec-bg { position: absolute; inset: 0; background: #ffc400; }
+    #ec-mark { position: absolute; left: 160px; top: 190px; width: 340px; height: 340px; }
+    #ec-mark-in { width: 100%; height: 100%; background: #13161b; color: #ffc400; border-radius: 30px; display: grid; place-items: center; font-size: 190px; letter-spacing: -0.04em; transform: rotate(-4deg); }
+    #ec-name { position: absolute; left: 560px; top: 168px; color: #13161b; font-size: 190px; line-height: 0.92; letter-spacing: -0.02em; }
+    #ec-phone { position: absolute; left: 160px; top: 640px; font-family: "JetBrains Mono", monospace; font-weight: 700; font-size: 72px; color: #13161b; letter-spacing: -0.02em; }
+    #ec-cta { position: absolute; left: 160px; top: 780px; }
+    #ec-cta-in { display: inline-block; background: #13161b; color: #ffc400; font-size: 72px; line-height: 1; padding: 30px 64px; border-radius: 999px; }
+  </style>
+  <div id="root" data-composition-id="endcard" data-width="1920" data-height="1080">
+    <div id="ec-bg" class="clip" data-start="0" data-duration="4.8" data-track-index="1"></div>
+    <div id="ec-mark" class="clip" data-start="0" data-duration="4.8" data-track-index="2"><div id="ec-mark-in" data-var-text="mark">nt.</div></div>
+    <div id="ec-name" class="clip" data-start="0" data-duration="4.8" data-track-index="2"><span data-var-text="name1">NOVA</span><br /><span data-var-text="name2">TREYLER</span></div>
+    <div id="ec-phone" class="clip" data-start="0" data-duration="4.8" data-track-index="2" data-var-text="phone">0 000 000 00 00</div>
+    <div id="ec-cta" class="clip" data-start="0" data-duration="4.8" data-track-index="2"><div id="ec-cta-in" data-var-text="cta">Teklif Al</div></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    // sarı zemin alttan biner; rozet yerine oturur, wordmark soldan açılır, telefon ve düğme yukarıdan açılır
+    tl.fromTo("#ec-bg", { clipPath: "inset(100% 0 0 0)" }, { clipPath: "inset(0% 0 0 0)", duration: 0.5, ease: "power3.inOut" }, 0);
+    tl.fromTo("#ec-mark-in", { scale: 0.55, opacity: 1 }, { scale: 1, duration: 0.6, ease: "back.out(1.6)" }, 0.4);
+    tl.fromTo("#ec-name", { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: 0.45, ease: "power3.out" }, 0.8);
+    tl.fromTo("#ec-phone", { clipPath: "inset(100% 0 0 0)" }, { clipPath: "inset(0% 0 0 0)", duration: 0.35, ease: "power3.out" }, 1.4);
+    tl.fromTo("#ec-cta-in", { clipPath: "inset(100% 0 0 0)" }, { clipPath: "inset(0% 0 0 0)", duration: 0.35, ease: "power3.out" }, 1.6);
+    window.__timelines["endcard"] = tl;
+  </script>
+</template>

@@ -1,0 +1,31 @@
+{
+  "name": "treyler-sablon",
+  "private": true,
+  "version": "0.2.0",
+  "scripts": {
+    "dev": "next dev -H 127.0.0.1 -p 3000",
+    "build": "next build",
+    "typecheck": "tsc --noEmit",
+    "test:e2e": "next build && playwright test -c playwright.config.mjs",
+    "serve": "node scripts/serve-out.mjs",
+    "stills": "node scripts/render-stills.mjs",
+    "catalog": "node scripts/build-catalog.mjs",
+    "brand-check": "node scripts/brand-swap-check.mjs"
+  },
+  "dependencies": {
+    "gsap": "^3.15.1",
+    "next": "^16.4.6",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "three": "^0.187.0"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.14.0",
+    "@playwright/test": "^1.65.0",
+    "@types/node": "^26.6.6",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@types/three": "^0.187.0",
+    "typescript": "^5.9.3"
+  }
+}

@@ -1,0 +1,51 @@
+/* Katalog: ekranda A4 sayfa önizlemesi, yazdırmada yalnızca sayfalar (PDF bu kurallarla üretilir) */
+@page { size: A4; margin: 0; }
+.sheets-wrap { background: var(--bg2); }
+.sheets { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 420px), 1fr)); gap: 24px; }
+.sheet { --mm: calc(100cqw / 210); container-type: inline-size; position: relative; aspect-ratio: 210 / 297; overflow: hidden; background: #f2f3f0; color: #13161b; border: 1px solid var(--line); border-radius: 6px; }
+.sheet > * { margin-left: 8.5%; margin-right: 8.5%; }
+.sheet .kicker { margin-top: 7%; margin-bottom: 2.4%; font: 400 2.4cqw var(--mono); color: #8a6200; }
+.sheet h2 { font-size: 6.2cqw; margin-bottom: 2.4%; max-width: none; }
+.sheet h3 { font: 800 2.3cqw var(--body); letter-spacing: 0.08em; text-transform: uppercase; color: #8a6200; margin-bottom: 1.6cqw; }
+.sheet .lead { font-size: 2.5cqw; line-height: 1.5; margin-top: 0; margin-bottom: 3%; max-width: none; color: #3a3f47; }
+.sheet .small { font-size: 2.1cqw; margin-top: 4%; color: #5c626b; }
+.sheet-foot { position: absolute; left: 0; right: 0; bottom: 4.2%; display: flex; justify-content: space-between; font: 400 2cqw var(--mono); color: #5c626b; }
+.sheet-img { aspect-ratio: 3 / 1.45; background: radial-gradient(90% 80% at 50% 40%, #f7f7f5, #dfe1dc); border-radius: 2cqw; overflow: hidden; margin-bottom: 3%; }
+.sheet-img img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.sheet-specs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3cqw; margin-bottom: 3%; }
+.sheet-specs dl { display: grid; gap: 1.6cqw; }
+.sheet-specs dt { font: 400 1.9cqw var(--mono); color: #5c626b; }
+.sheet-specs dd { font: 800 2.6cqw var(--display); margin: 0.2cqw 0 0; }
+.sheet-list { list-style: none; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 0 4cqw; }
+.sheet-list li { position: relative; padding: 1.1cqw 0 1.1cqw 3.4cqw; border-top: 1px solid rgba(19, 22, 27, 0.14); font-size: 2.3cqw; color: #3a3f47; }
+.sheet-list li::before { content: ''; position: absolute; left: 0; top: 50%; width: 2cqw; height: 0.35cqw; background: #ffc400; }
+.sheet-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 3cqw 5cqw; margin-bottom: 7%; }
+.sheet-stats strong { display: block; font: 900 8cqw / 1 var(--display); letter-spacing: -0.04em; color: #8a6200; }
+.sheet-stats span { display: block; margin-top: 1cqw; font: 400 2.1cqw var(--mono); color: #5c626b; }
+.sheet-index { list-style: none; padding: 0; }
+.sheet-index li { display: grid; grid-template-columns: 5cqw 1fr auto; gap: 2cqw; align-items: baseline; padding: 1.7cqw 0; border-top: 1px solid rgba(19, 22, 27, 0.14); font-size: 2.6cqw; }
+.sheet-index b { font: 600 2.1cqw var(--mono); color: #8a6200; }
+.sheet-index span { font-weight: 800; }
+.sheet-index i { font: 400 2cqw var(--mono); font-style: normal; color: #5c626b; }
+.sheet-contact { display: grid; gap: 3.4cqw; margin-top: 6%; }
+.sheet-contact dt { font: 400 2cqw var(--mono); text-transform: uppercase; letter-spacing: 0.1em; color: #5c626b; }
+.sheet-contact dd { margin: 0.6cqw 0 0; font: 800 3.6cqw var(--display); }
+/* kapak: grafit zemin, sarı vurgu */
+.sheet.cover { background: #13161b; color: #f2f3f0; }
+.sheet.cover .kicker { color: #ffc400; margin-top: 14%; }
+.sheet.cover h2 { font-size: 13cqw; line-height: 0.9; }
+.sheet.cover img { display: block; width: 100%; margin: 6% 0 4%; height: auto; }
+.sheet.cover .lead { color: #c9ccd1; max-width: 62%; }
+.cover-foot { position: absolute; left: 0; right: 0; bottom: 5%; display: flex; justify-content: space-between; font: 400 2.2cqw var(--mono); color: #ffc400; }
+.sheet.back { background: #ffc400; }
+.sheet.back .kicker, .sheet.back .sheet-contact dt, .sheet.back .small, .sheet.back .sheet-foot, .sheet.back .lead { color: #13161b; }
+
+@media print {
+  html, body { background: #fff !important; }
+  .no-print, header.nav, .foot-wrap, .float, .crumbs { display: none !important; }
+  body:has([data-bc~="inner"]) main { padding: 0; }
+  .sheets-wrap { padding: 0 !important; background: none; }
+  .sheets { display: block; }
+  .sheet { width: 210mm; height: 297mm; aspect-ratio: auto; border: 0; border-radius: 0; break-after: page; break-inside: avoid; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .sheet:last-child { break-after: auto; }
+}
