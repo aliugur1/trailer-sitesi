@@ -1,5 +1,7 @@
 # Treyler şablonu (Next.js + TypeScript)
 
+![Treyler şablonu kısa tanıtım](docs/demo.gif)
+
 Genel treyler üreticisi şablon sitesi: sinematik 3D ana sayfa (gece yolu, teknik çizim, yapılandırıcı), ürün turu ve listesi, ürün detayı, galeri, katalog, servis ağı, satış sonrası, indirme merkezi, kurumsal, iletişim. Tamamen statik çıktı (backend yok), TR/EN altyapılı.
 
 ```bash
